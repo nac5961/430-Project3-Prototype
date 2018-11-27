@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Payment Tracker</title>
+  
+	<!-- Imported Scripts -->
+	<script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+	<script crossorigin src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	
+	<!-- Custom Scripts -->
+	<script src="/assets/accountBundle.js"></script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/assets/img/favicon.png" />
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../hosted/style.css" />
+</head>
+<body> 
+	<header>
+		<a id="logo" href="/display">Tracker</a>
+		<a class="nav" href="/logout">Logout</a>
+		<a class="nav" href="/account">Account</a>
+		<a class="nav" href="/create">Create</a>
+		<a class="nav" href="/display">Display</a>
+	</header>
+	
+	<p id="message"></p>
+	
+	<div id="password-form-container">
+		<h1>Update Password</h1>
+		
+		<form id="password-form" action="/updateAccount" method="PUT">
+			<label for="password">New Password</label>
+			<input id="password" class="input-button" type="password" name="password" placeholder="Password" />
+			<label for="password2">Re-type Password</label>
+			<input id="password2" class="input-button" type="password" name="password2" placeholder="Re-type Password" />
+			<input type="hidden" name="_csrf" value={{csrfToken}} />
+			<input id="password-form-submit" class="submit input-button" type="submit" value="Update Password" />
+		</form>
+	</div>
+</body>
+</html>

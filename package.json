@@ -1,0 +1,51 @@
+{
+  "name": "430-project2",
+  "version": "1.0.0",
+  "engines": {
+    "node": "8.4.0",
+    "npm": "4.0.5"
+  },
+  "description": "Project 2 for IGME-430",
+  "main": "./server/app.js",
+  "scripts": {
+    "build": "npm run buildHomeBundle && npm run buildCreateBundle && npm run buildDisplayBundle && npm run buildAccountBundle",
+    "buildHomeBundle": "babel ./client/home/home.js ./client/helper --presets react --out-file ./hosted/homeBundle.js",
+    "buildCreateBundle": "babel ./client/app/create.js ./client/helper --presets react --out-file ./hosted/createBundle.js",
+    "buildDisplayBundle": "babel ./client/app/display.js ./client/helper --presets react --out-file ./hosted/displayBundle.js",
+	"buildAccountBundle": "babel ./client/app/account.js ./client/helper --presets react --out-file ./hosted/accountBundle.js",
+	"watchHomeBundle": "babel --watch ./client/home/home.js ./client/helper --presets react --out-file ./hosted/homeBundle.js",
+	"watchCreateBundle": "babel --watch ./client/app/create.js ./client/helper --presets react --out-file ./hosted/createBundle.js",
+	"watchDisplayBundle": "babel --watch ./client/app/display.js ./client/helper --presets react --out-file ./hosted/displayBundle.js",
+	"watchAccountBundle": "babel --watch ./client/app/account.js ./client/helper --presets react --out-file ./hosted/accountBundle.js",
+    "nodemon": "nodemon --watch ./server ./server/app.js",
+    "start": "node ./server/app.js",
+    "pretest": "eslint ./server --fix",
+    "test": "echo \"Tests complete\""
+  },
+  "author": "Nicholas Cato",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "connect-redis": "^3.0.2",
+    "cookie-parser": "^1.3.3",
+    "csurf": "^1.8.3",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.13.0",
+    "helmet": "^1.3.0",
+    "moment": "^2.22.2",
+    "mongoose": "^4.4.6",
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.0.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.1",
+    "nodemon": "^1.11.0"
+  }
+}

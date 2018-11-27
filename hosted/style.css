@@ -1,0 +1,564 @@
+/*
+	Color - #71c0cf
+	Highlight Color/Border Color - #4894a3
+	Hover  Color - #3a94e7
+	Darker Hover Color - #327785
+	Overdue Color - #b65c5c
+*/
+
+#message{
+	display: none;
+	position: absolute;
+	left: 45%;
+	bottom: 100px;
+	width: 200px;
+	color: white;
+	text-align: center;
+	padding: 5px;
+	border-radius: 6px;
+	background-color: #327785;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+}
+
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+}
+
+body{
+	min-width: 800px;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: bold;
+	color: #4894a3;
+	margin-bottom: 10px;
+}
+
+h3 {
+	font-size: 18px;
+	margin-top: 17px;
+	margin-bottom: 17px;
+}
+
+a{
+	text-decoration: none;
+	display: block;
+}
+
+a:hover{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+button:focus{
+	outline: none;
+}
+
+button:hover{
+	cursor: pointer;
+}
+
+button, .input-button {
+	font-size: 15px;
+	height: 40px;
+	padding: 5px 10px;
+	border-radius: 6px;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+
+input:focus{
+	outline: none;
+}
+
+.highlight{
+	color: #4894a3;
+	font-weight: bold;
+}
+
+.overdue{
+	color: #b65c5c;
+	font-weight: bold;
+}
+
+header {
+	width: 100%;
+	height: 60px;
+	background-color: #71c0cf;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+}
+
+#logo{
+	margin-top: 12px;
+	margin-left: 40px;
+	float: left;
+	font-weight: bold;
+	font-size: 25px;
+	color: white;
+}
+
+#logo:hover{
+	text-decoration: none;
+}
+
+#premium{
+	color: #71c0cf;
+	padding: 5px 10px;
+	margin: 15px 40px 0 0;
+	background-color: white;
+	border-radius: 6px;
+}
+
+#premium:hover{
+	color: white;
+	text-decoration: none;
+	background-color: #327785;
+}
+
+.nav{
+	float: right;
+	margin: 20px 40px 0 0;
+	color: white;
+}
+
+.nav:hover{
+	color: white;
+}
+
+.submit{
+	background-color: #71c0cf;
+	border: 1px solid #71c0cf;
+	color: white;
+}
+
+.submit:hover{
+	background-color: #327785;
+	border-color: #327785;
+	cursor: pointer;
+}
+
+#premium-container{
+	width: 60%;
+	margin: 50px auto;
+	text-align: center;
+	overflow: auto;
+}
+
+#premium-container div{
+	overflow: auto;
+}
+
+#premium-container h1{
+	margin-bottom: 30px;
+}
+
+#premium-container button{
+	margin-right: 25px;
+	margin-top: 30px;
+}
+
+#premium-container button:hover{
+	background-color: #71c0cf;
+	cursor: default;
+	border: 1px solid #71c0cf;
+}
+
+.premium-info{
+	width: 30%;
+	margin-right: 3%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float: left;
+}
+
+#about {
+	width: 50%;
+	margin: 50px auto 0 auto;
+	padding: 30px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+}
+
+#about h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#about-text {
+	font-size: 18px;
+}
+
+#developer{
+	font-size: 14px;
+	text-align: center;
+}
+
+#home-container{
+	width: 65%;
+	margin: 80px auto 0 auto;
+	overflow: auto;
+}
+
+#intro{
+	width: 42%;
+	float: left;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	padding: 40px;
+}
+
+#home-content{
+	width: 48%;
+	float: right;
+}
+
+#intro ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+#intro ul li{
+	margin-top: 30px;
+	height: 24px; /* This matches the size of the icons */
+	padding-left: 35px;
+}
+
+#home-form input{
+	width: 75%;
+	margin: 10px 0;
+}
+
+#home-content p{
+	width: 75%;
+	color: #71c0cf;
+	text-align: center;
+}
+
+#home-content p:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#results-container{
+	width: 60%;
+	margin: 60px auto 0 auto;
+	overflow: auto;
+}
+
+#search {
+	text-align: center;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #ddd;
+}
+
+#search-bar {
+	width: 60%;
+	margin-right: -3px;
+	font-size: 14px;
+	border-right-color: #71c0cf;
+	border-top-right-radius: 0;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 5px;
+}
+
+#search-button {
+	width: 82px;
+	margin-left: -3px;
+	font-size: 14px;
+	line-height: 0;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 0;
+}
+
+#filter{
+	float: left;
+	overflow: auto;
+	width: 222px;
+	padding-left: 10px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+}
+
+#filter h3{
+	color: #bfbfc0;
+	font-size: 18px;
+	width: 95%;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	font-weight: normal;
+	border-bottom: 1px solid #ddd;
+}
+
+#filter-form{
+	overflow: auto;
+}
+
+.filter-header{
+	width: 80%;
+	float: left;
+	clear: left;
+	font-size: 14px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	margin-top: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+.filter-input{
+	float: left;
+	clear: left;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.filter-label{
+	float: left;
+	clear: right;
+	font-size: 14px;
+	line-height: 0.9em;
+}
+
+#results-content{
+	float: left;
+	width: 70%;
+	margin-left: 20px;
+}
+
+#not-found{
+	text-align: center;
+	margin-top: 0;
+	padding: 30px 0;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+}
+
+.payment{
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+	overflow: auto;
+}
+
+.payment-name{
+	float: left;
+	width: 40%;
+	margin-left: 25px;
+	margin-right: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.payment-cost{
+	float: left;
+	width: 18%;
+}
+
+.payment-name, .payment-cost{
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+.payment-icons-container{
+	float: left;
+	clear: left;
+	width: 58%;
+	margin-left: 25px;
+}
+
+.date-icons{
+	float: left;
+	width: 69%;
+	margin-right: 25px;
+}
+
+.options-icons{
+	float: left;
+	width: 21%;
+}
+
+.date-icons, .options-icons{
+	list-style-type: none;
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.date-icons li, .options-icons li{
+	margin-top: 10px;
+	line-height: 1.1em;
+	height: 16px; /* This matches the size of the icons */
+	padding-left: 25px;
+}
+
+#form-creation-container, #password-form-container{
+	/*width: 25%;*/
+	width: 420px;
+	margin: 60px auto 0 auto;
+	text-align: center;
+}
+
+#password-form-container h1{
+	text-align: center;
+}
+
+button.active-button{
+	background-color: #4894a3;
+	color: white;
+}
+
+button.inactive-button{
+	background-color: #fff;
+	color: black;
+}
+
+button.inactive-button:hover{
+	background-color: #327785;
+	color: white;
+}
+
+button#create-button{
+	width: 40%;
+	margin-right: -4px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 6px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 6px;
+}
+
+button#update-button{
+	width: 40%;
+	margin-left: -4px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 0;
+}
+
+#create-button, #update-button{
+	margin: 10px 0;
+	border: 1px solid #4894a3;
+}
+
+#payment-form, #password-form{
+	overflow: auto;
+	text-align: center;
+	margin: 40px auto 20px auto;
+	padding: 20px 30px 15px 30px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+}
+
+#payment-form #payment-form-submit, #password-form #password-form-submit{
+	margin-top: 15px;
+}
+
+#payment-form input, #payment-form label, #password-form input, #password-form label{
+	margin: 0;
+	font-size: 14px;
+	clear: left;
+	float: left;
+}
+
+#payment-form input, #password-form input{
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+#payment-form label, #password-form label{
+	margin-bottom: 5px;
+}
+
+#list-icon-color{
+	background: url("/assets/img/list-icon-color.png") no-repeat left top;
+}
+
+#calendar-icon-color{
+	background: url("/assets/img/calendar-icon-color.png") no-repeat left top;
+}
+
+#notification-icon-color{
+	background: url("/assets/img/notification-icon-color.png") no-repeat left top;
+}
+
+.calendar-icon{
+	background: url("/assets/img/calendar-icon.png") no-repeat left top;
+}
+
+.clock-icon{
+	background: url("/assets/img/clock-icon.png") no-repeat left top;
+}
+
+.overdue-icon{
+	background: url("/assets/img/overdue-icon.png") no-repeat left top;
+	color: #b65c5c;
+}
+
+.edit-icon{
+	background: url("/assets/img/edit-icon.png") no-repeat left top;
+	margin-right: 12px;
+}
+
+.edit-icon:hover{
+	background: url("/assets/img/edit-icon-hover.png") no-repeat left top;
+	cursor: pointer;
+	color: #4894a3;
+}
+
+.delete-icon{
+	background: url("/assets/img/delete-icon.png") no-repeat left top;
+}
+
+.delete-icon:hover{
+	background: url("/assets/img/delete-icon-hover.png") no-repeat left top;
+	cursor: pointer;
+	color: #4894a3;
+}
+
+@media screen and (max-width: 1400px){
+	#results-container{
+		width: 80%;
+	}
+	
+	#home-container{
+		width: 80%;
+	}
+	
+	#intro{
+		width: 45%;
+	}
+}
+
+@media screen and (max-width: 1100px){
+	#results-container{
+		width: 95%;
+	}
+	
+	#home-container{
+		width: 95%;
+	}
+	
+	#premium-container button{
+		margin-right: 0;
+	}
+	
+	.premium-info{
+		width: 90%;
+		margin: 20px auto;
+		float: none;
+	}
+}
+
+@media screen and (max-width: 900px){	
+	#filter{
+		width: 25%;
+	}
+	
+	#intro{
+		width: 48%;
+	}
+}

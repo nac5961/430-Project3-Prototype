@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Payment Tracker</title>
+  
+	<!-- Imported Scripts -->
+	<script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+	<script crossorigin src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	
+	<!-- Custom Scripts -->
+	<script src="/assets/createBundle.js"></script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/assets/img/favicon.png" />
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../../hosted/style.css" />
+</head>
+<body> 
+	<header>
+		<a id="logo" href="/display">Tracker</a>
+		<a id="premium" class="nav" href="/premium">Premium</a>
+		<a class="nav" href="/logout">Logout</a>
+		<a class="nav" href="/account">Account</a>
+		<a class="nav" href="/create">Create</a>
+		<a class="nav" href="/display">Display</a>
+	</header>
+	
+	<div id="premium-container">
+		<h1>Become a Premium Member</h1>
+		<p>As a Premium Member, enjoy the perks of having more control over your payments.
+		For as little as $5.99/month, you'll have unlimited access to the following
+		benefits. You can cancel at anytime.</p>
+		
+		<div>
+			<div class="premium-info">
+				<p><img src="../../hosted/img/budget-icon.png" /></p>
+				<p class="highlight">CREATE A BUDGET</p>
+				<p>Create a monthly or yearly budget to manage
+				your expenses.</p>
+			</div>
+			
+			<div class="premium-info">
+				<p><img src="../../hosted/img/email-icon.png" /></p>
+				<p class="highlight">LINK EMAIL CALENDAR SERVICES</p>
+				<p>View all payment information in your email
+				provider's calendar service.</p>
+			</div>
+			
+			<div class="premium-info">
+				<p><img src="../../hosted/img/repeat-icon.png" /></p>
+				<p class="highlight">AUTOMATE PAYMENTS</p>
+				<p>Setup payments to be created once per week, month,
+				or year.</p>
+			</div>
+		</div>
+		
+		<div>
+			<button class="submit">Join Now</button>
+		</div>
+	</div>
+</body>
+</html>

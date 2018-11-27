@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Payment Tracker</title>
+  
+	<!-- Imported Scripts -->
+	<script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+	<script crossorigin src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	
+	<!-- Custom Scripts -->
+	<script src="../hosted/homeBundle.js"></script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../hosted/img/favicon.png" />
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../hosted/style.css" />
+</head>
+<body> 
+	<header>
+		<a id="logo" href="/">Tracker</a>
+		<a class="nav" href="/about">About</a>
+		<a class="nav" href="/">Home</a>
+	</header>
+	
+	<p id="message"></p>
+
+	<div id="home-container">
+		<section id="intro">
+			<h1>Manage all of your payments in one location.</h1>
+			<ul>
+				<li id="list-icon-color"><span class="highlight">Create</span> a list of payments.</li>
+				<li id="calendar-icon-color"><span class="highlight">Assign</span> due dates.</li>
+				<li id="notification-icon-color"><span class="highlight">See</span> when payments are overdue.</li>
+			</ul>
+		</section>
+
+		<section id="home-content">
+			<!-- Sign Up -->
+			
+			<h1>Sign Up</h1>
+			<form id="home-form">
+				<input class="input-button" type="text" placeholder="Username" />
+				<input class="input-button" type="password" placeholder="Password" />
+				<input class="input-button" type="password" placeholder="Re-type Password" />
+				<input class="submit input-button" type="submit" value="Sign Up" />
+			</form>
+			<p>Already have an account? Log in</p>
+			
+			
+			<!-- Login -->
+			<!--
+			<h1>Login</h1>
+			<form id="home-form">
+				<input class="input-button" type="text" placeholder="Username" />
+				<input class="input-button" type="password" placeholder="Password" />
+				<input class="submit input-button" type="submit" value="Sign In" />
+			</form>
+			<p>Don't have an account? Sign Up</p>
+			-->
+			
+		</section>
+	</div>
+</body>
+</html>
