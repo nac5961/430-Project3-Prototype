@@ -26,17 +26,27 @@ var handlePayment = function handlePayment(e) {
 	return false;
 };
 
+//Function to change the background image of the priority when the select is changed
+var handlePriority = function handlePriority(e) {
+	var priorityField = document.getElementById('priority');
+	switchPriority(priorityField, e.target.value);
+};
+
 //Function to clear the form after a successful submission
 var clearForm = function clearForm() {
 	document.getElementById('name').value = '';
 	document.getElementById('cost').value = '';
 	document.getElementById('datepicker').value = '';
+
+	var priorityField = document.getElementById('priority');
+	switchPriority(priorityField, 'normal');
 };
 
 //Function to use React to dynamically create the payment form
 var PaymentForm = function PaymentForm(props) {
 	var costLabel = 'Cost';
 	var dateLabel = 'Due Date';
+	var priorityLabel = 'Priority';
 	var submitLabel = 'Create Payment';
 	var method = 'POST';
 	var action = '/createPayment';
@@ -45,6 +55,7 @@ var PaymentForm = function PaymentForm(props) {
 	if (props.isUpdate) {
 		costLabel = "Updated " + costLabel;
 		dateLabel = "Updated " + dateLabel;
+		priorityLabel = "Updated " + priorityLabel;
 		submitLabel = 'Update Payment';
 		method = 'PUT';
 		action = '/updatePayment';
@@ -74,6 +85,30 @@ var PaymentForm = function PaymentForm(props) {
 			dateLabel
 		),
 		React.createElement("input", { className: "input-button", id: "datepicker", name: "dueDate", placeholder: "MM/DD/YYYY" }),
+		React.createElement(
+			"label",
+			{ htmlFor: "priority" },
+			priorityLabel
+		),
+		React.createElement(
+			"select",
+			{ onChange: handlePriority, className: "input-button option-normal-priority", id: "priority", name: "priority" },
+			React.createElement(
+				"option",
+				{ id: "high", value: "high" },
+				"High"
+			),
+			React.createElement(
+				"option",
+				{ id: "normal", value: "normal", selected: true },
+				"Normal"
+			),
+			React.createElement(
+				"option",
+				{ id: "low", value: "low" },
+				"Low"
+			)
+		),
 		React.createElement("input", { id: "csrfToken", type: "hidden", name: "_csrf", value: props.csrf }),
 		React.createElement("input", { id: "payment-form-submit", className: "submit input-button", type: "submit", value: submitLabel })
 	);
@@ -88,6 +123,31 @@ var switchActiveButton = function switchActiveButton(activeButton, inactiveButto
 	//Make the inactive button inactive
 	inactiveButton.classList.add('inactive-button');
 	inactiveButton.classList.remove('active-button');
+};
+
+//Function to switch the background color of the priority
+var switchPriority = function switchPriority(selectElement, type) {
+	//Remove all priority classes
+	selectElement.classList.remove('option-high-priority');
+	selectElement.classList.remove('option-normal-priority');
+	selectElement.classList.remove('option-low-priority');
+
+	//Change the selected option
+	document.getElementById(type).selected = true;
+
+	//Assign the appropriate class
+	switch (type) {
+		case 'low':
+			selectElement.classList.add('option-low-priority');
+			break;
+		case 'high':
+			selectElement.classList.add('option-high-priority');
+			break;
+		case 'normal':
+		default:
+			selectElement.classList.add('option-normal-priority');
+			break;
+	}
 };
 
 //Function to make the datepicker functional
@@ -151,11 +211,13 @@ var setupUI = function setupUI(csrf) {
 			var nameField = document.getElementById('name');
 			var costField = document.getElementById('cost');
 			var dateField = document.getElementById('datepicker');
+			var priorityField = document.getElementById('priority');
 
 			//Set the values to the payment
 			nameField.value = temp.payment.name;
 			costField.value = temp.payment.cost;
 			dateField.value = moment(new Date(temp.payment.dueDate), 'MM-DD-YYYY').format('M/D/YYYY');
+			switchPriority(priorityField, temp.payment.priority);
 
 			//Get the csrfToken and turn it into JSON for the AJAX request
 			var csrfToken = document.getElementById('csrfToken').value;

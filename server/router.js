@@ -13,6 +13,7 @@ const router = (app) => {
   app.get('/create', mid.requiresSecure, mid.requiresLogin, controllers.Payment.createPage);
   app.get('/account', mid.requiresSecure, mid.requiresLogin, controllers.Payment.accountPage);
   app.get('/premium', mid.requiresSecure, mid.requiresLogin, controllers.Payment.premiumPage);
+  app.get('/expenses', mid.requiresSecure, mid.requiresLogin, controllers.Payment.expensePage);
 
   app.get('/getTemp', mid.requiresSecure, mid.requiresLogin, controllers.Payment.getTemp);
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);

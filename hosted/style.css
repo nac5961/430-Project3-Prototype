@@ -53,12 +53,20 @@ a:hover{
 	text-decoration: underline;
 }
 
-button:focus{
+select:focus, button:focus{
 	outline: none;
 }
 
-button:hover{
+select:hover, button:hover{
 	cursor: pointer;
+}
+
+select{
+	color: gray;
+	font-size: 14px;
+	padding: 5px 5px;
+	border-radius: 4px;
+	border: 1px solid rgba(0,0,0,0.3);
 }
 
 button, .input-button {
@@ -344,10 +352,19 @@ header {
 	overflow: auto;
 }
 
+.payment-priority{
+	float: left;
+	clear: left;
+	position: relative;
+	top: 50px;
+	margin-right: 20px;
+	margin-left: 10px;
+}
+
 .payment-name{
 	float: left;
 	width: 40%;
-	margin-left: 25px;
+	margin-left: 10px;
 	margin-right: 25px;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -367,7 +384,7 @@ header {
 	float: left;
 	clear: left;
 	width: 58%;
-	margin-left: 25px;
+	margin-left: 55px;
 }
 
 .date-icons{
@@ -457,20 +474,133 @@ button#update-button{
 	margin-top: 15px;
 }
 
-#payment-form input, #payment-form label, #password-form input, #password-form label{
+#payment-form input, #payment-form label, #payment-form select, #password-form input, #password-form label{
 	margin: 0;
 	font-size: 14px;
 	clear: left;
 	float: left;
 }
 
-#payment-form input, #password-form input{
+#payment-form input, #password-form input, #payment-form select{
 	width: 100%;
 	margin-bottom: 15px;
 }
 
 #payment-form label, #password-form label{
 	margin-bottom: 5px;
+}
+
+#payment-form select{
+	background-position: 15px center;
+	padding-left: 35px;
+}
+
+.option-high-priority{
+	background: url('/assets/img/high-priority-icon.png') no-repeat left;
+}
+
+.option-normal-priority{
+	background: url('/assets/img/normal-priority-icon.png') no-repeat left;
+}
+
+.option-low-priority{
+	background: url('/assets/img/low-priority-icon.png') no-repeat left;
+}
+
+#expenses-container{
+	width: 90%;
+	margin: 60px auto 0 auto;
+	overflow: auto;
+}
+
+#expenses-container h1{
+	text-align: center;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ddd;
+}
+
+#expenses-content{
+	float: left;
+	width: 68%;
+	margin-top: 10px;
+}
+
+#expenses-extra{
+	float: right;
+	width: 30%;
+	margin-top: 10px;
+	text-align: center;
+}
+
+#expenses-extra h4{
+	font-size: 16px;
+}
+
+#expense-options{
+	margin-bottom: 30px;
+}
+
+#expense-label{
+	overflow: auto;
+	border-bottom: 1px solid #ddd;
+}
+
+#expense-label p{
+	padding-left: 15px;
+	margin-bottom: 5px;
+}
+
+#expense-label-cost{
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+#expense-label-date{
+	border-right: 1px solid #ddd;
+}
+
+#expense-label-name, .expense-name{
+	float: left;
+	width: 28%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#expense-label-cost, .expense-cost{
+	float: left;
+	width: 25%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#expense-label-date, .expense-date{
+	float: left;
+	width: 20%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#expense-label-priority, .expense-priority{
+	float: left;
+	width: 27%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.expense-priority img{
+	margin-right: 10px;
+	position: relative;
+	bottom: 1px;
+}
+
+.expenses{
+	overflow: auto;
+	border-bottom: 1px solid #ddd;
+}
+
+.expenses p{
+	margin-bottom: 0;
+	padding: 15px;
 }
 
 #list-icon-color{

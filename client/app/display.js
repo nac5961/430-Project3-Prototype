@@ -117,6 +117,9 @@ const PaymentList = (props) => {
 		let timeLeft;
 		let timeIcon;
 		
+		//Set the src for the priority icon
+		const src = `/assets/img/${payment.priority}-priority-icon.png`;
+		
 		//Set the id to use for the name
 		const nameId = `${paymentNameId}${index}`;
 		
@@ -151,9 +154,11 @@ const PaymentList = (props) => {
 			timeIcon = 'clock-icon';
 		}
 		
-		
 		return(
 			<div className="payment">
+				<div className="payment-priority">
+					<img src={src} alt={payment.priority} />
+				</div>
 				<h3 id={nameId} className="payment-name highlight">{payment.name}</h3>
 				<h3 className="payment-cost highlight">${payment.cost}</h3>
 				<div className="payment-icons-container">

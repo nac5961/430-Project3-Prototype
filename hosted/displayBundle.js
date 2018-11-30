@@ -120,6 +120,9 @@ var PaymentList = function PaymentList(props) {
 		var timeLeft = void 0;
 		var timeIcon = void 0;
 
+		//Set the src for the priority icon
+		var src = "/assets/img/" + payment.priority + "-priority-icon.png";
+
 		//Set the id to use for the name
 		var nameId = "" + paymentNameId + index;
 
@@ -157,6 +160,11 @@ var PaymentList = function PaymentList(props) {
 		return React.createElement(
 			"div",
 			{ className: "payment" },
+			React.createElement(
+				"div",
+				{ className: "payment-priority" },
+				React.createElement("img", { src: src, alt: payment.priority })
+			),
 			React.createElement(
 				"h3",
 				{ id: nameId, className: "payment-name highlight" },

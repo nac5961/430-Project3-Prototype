@@ -41,6 +41,11 @@ const PaymentSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  priority: {
+    type: String,
+    trim: true,
+    required: true,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
@@ -54,6 +59,7 @@ PaymentSchema.statics.toSession = (doc) => ({
   name: doc.name,
   cost: doc.cost,
   dueDate: doc.dueDate,
+  priority: doc.priority,
 });
 
 // Function to get all payments by the owner
@@ -62,7 +68,7 @@ PaymentSchema.statics.findAllByOwner = (ownerId, callback) => {
     ownerId: convertId(ownerId),
   };
 
-  return PaymentModel.find(query).select('name cost dueDate').exec(callback);
+  return PaymentModel.find(query).select('name cost dueDate priority').exec(callback);
 };
 
 // Function to find one payment by the owner
@@ -72,7 +78,7 @@ PaymentSchema.statics.findOneByOwner = (name, ownerId, callback) => {
     ownerId: convertId(ownerId),
   };
 
-  return PaymentModel.findOne(query).select('name cost dueDate').exec(callback);
+  return PaymentModel.findOne(query).select('name cost dueDate priority').exec(callback);
 };
 
 // Function to delete one payment by the owner

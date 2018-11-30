@@ -8,6 +8,9 @@ const helper = require('./helper.js');
 // Get the Payment Model
 const Payment = models.Payment;
 
+// Function to display the expenses page
+const expensePage = (req, res) => res.render('expenses');
+
 // Function to display the premium page
 const premiumPage = (req, res) => res.render('premium');
 
@@ -109,14 +112,25 @@ const createPayment = (req, res) => {
   const name = helper.verifyString(`${req.body.name}`);
   const cost = Number(`${req.body.cost}`);
   const dueDate = moment(`${req.body.dueDate}`, 'MM-DD-YYYY').startOf('day');
+  const priority = helper.verifyString(`${req.body.priority}`);
 
   // Get today and yesterday to verify the due date
   const today = moment().startOf('day');
   const yesterday = moment().subtract(1, 'days').startOf('day');
 
   // Validate data
-  if (!name || !req.body.cost || !req.body.dueDate) {
+  if (!name || !req.body.cost || !req.body.dueDate || !priority) {
     return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  // Make sure the priority is valid
+  switch (priority.toLowerCase()) {
+    case 'low':
+    case 'normal':
+    case 'high':
+      break;
+    default:
+      return res.status(400).json({ error: 'Invalid priority' });
   }
 
   // Make sure the cost is valid
@@ -151,6 +165,7 @@ const createPayment = (req, res) => {
     nameAndId: `${name}${req.session.account._id}`,
     cost: Number(cost.toFixed(2)),
     dueDate: dueDate.toDate(),
+    priority: priority.toLowerCase(),
   };
 
   // Create a new document with that data to save to the database
@@ -185,13 +200,24 @@ const updatePayment = (req, res) => {
   const name = helper.verifyString(`${req.body.name}`);
   const cost = Number(`${req.body.cost}`);
   const dueDate = moment(`${req.body.dueDate}`, 'MM-DD-YYYY').startOf('day');
+  const priority = helper.verifyString(`${req.body.priority}`);
 
   // Get today to verify the due date
   const today = moment().startOf('day');
 
   // Validate data
-  if (!name || !req.body.cost || !req.body.dueDate) {
+  if (!name || !req.body.cost || !req.body.dueDate || !priority) {
     return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  // Make sure the priority is valid
+  switch (priority.toLowerCase()) {
+    case 'low':
+    case 'normal':
+    case 'high':
+      break;
+    default:
+      return res.status(400).json({ error: 'Invalid priority' });
   }
 
   // Make sure the cost is valid
@@ -218,6 +244,7 @@ const updatePayment = (req, res) => {
   const paymentData = {
     cost: Number(cost.toFixed(2)),
     dueDate: dueDate.toDate(),
+    priority: priority.toLowerCase(),
   };
 
   // Get the account id in the session
@@ -297,9 +324,34 @@ const createDateQuery = (req, res, filter) => {
   return query;
 };
 
+// Function to convert a priority filter into a mongoDB query
+const createPriorityQuery = (req, res, filter) => {
+  let query = {};
+
+  // Create the query accordingly
+  switch (filter.toLowerCase()) {
+    case 'low':
+      query = { $eq: 'low' };
+
+      break;
+    case 'normal':
+      query = { $eq: 'normal' };
+
+      break;
+    case 'high':
+      query = { $eq: 'high' };
+
+      break;
+    default:
+      return res.status(400).json({ error: 'Invalid filter' });
+  }
+
+  return query;
+};
+
 // Function to get a filtered list of payments
 const filterPayments = (req, res) => {
-  const query = {};
+  let query = {};
   const sort = {};
 
   // This converts the data to strings to make
@@ -310,9 +362,12 @@ const filterPayments = (req, res) => {
   const dateFilterStr = helper.verifyString(`${req.query.date}`);
   const costFilterStr = helper.verifyString(`${req.query.cost}`);
   const wordFilterStr = helper.verifyString(`${req.query.word}`);
+  const priorityFilter = req.query.priority;
+  const priorityFilterStr = helper.verifyString(`${req.query.priority}`);
 
   // Render all payments if no filter is present
-  if (!dateFilter && !dateFilterStr && !costFilterStr && !wordFilterStr) {
+  if (!dateFilter && !dateFilterStr && !costFilterStr && !wordFilterStr &&
+  !priorityFilter && !priorityFilterStr) {
     return getAllPayments(req, res);
   }
 
@@ -337,6 +392,49 @@ const filterPayments = (req, res) => {
 
 		// Add query to $or operator
       query.$or.push(filterObj);
+    }
+  }
+
+  // Check if priorityFilter is a string and set priority query
+  if (priorityFilter && priorityFilter.constructor !== Array) {
+    query.priority = createPriorityQuery(req, res, priorityFilterStr);
+  }
+
+  // Check if priorityFilter is an array and set priority query
+  if (priorityFilter && priorityFilter.constructor === Array && priorityFilter.length > 0) {
+	// Use $or operator to use multiple queries
+    const orOperator = {
+      $or: [],
+    };
+
+	// If an $or operator already exists from the date, use an $and
+	// operator to have the $or operators stack
+    if (query.$or) {
+      const oldQuery = query;
+      query = {
+        $and: [oldQuery],
+      };
+    }
+
+    for (let i = 0; i < priorityFilter.length; i++) {
+		// Cast item to string
+      const filter = `${priorityFilter[i]}`;
+
+		// Create priority query
+      const filterObj = {
+        priority: createPriorityQuery(req, res, filter),
+      };
+
+		// Add query to $or operator
+      orOperator.$or.push(filterObj);
+    }
+
+	// If there is an $and operator then we are stacking $or operators,
+	// else we are only using one $or operator so create it
+    if (query.$and) {
+      query.$and.push(orOperator);
+    }	else {
+      query.$or = orOperator.$or;
     }
   }
 
@@ -387,6 +485,7 @@ const filterPayments = (req, res) => {
 };
 
 module.exports = {
+  expensePage,
   premiumPage,
   accountPage,
   createPage,
